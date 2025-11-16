@@ -1,15 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit,Poppins } from "next/font/google";
 import "./globals.css";
+import Header from "@/Components/Shared/Header/Navbar";
+import TopHeader from "@/Components/Shared/Header/TopHeader";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Google Fonts
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const outfit = Outfit({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-outfit",
 });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+})
+
 
 export const metadata = {
   title: "Create Next App",
@@ -20,8 +27,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${outfit.variable} ${poppins.variable} antialiased`}
       >
+        <TopHeader></TopHeader>
+        <Header />
         {children}
       </body>
     </html>
