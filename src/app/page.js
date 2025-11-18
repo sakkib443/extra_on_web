@@ -2,13 +2,21 @@ import Image from "next/image";
 import Hero from "./HomeComponents/Hero";
 import HomeAbout from "./HomeComponents/HomeAbout";
 import OurTeam from "./HomeComponents/Team";
+import FeaturerWebsite from "./HomeComponents/FeatureWebsite";
+import HomeCategory from "./HomeComponents/HomeCategory";
 
 export default function Home() {
   return (
     <div>
-      <Hero></Hero>
-      <HomeAbout></HomeAbout>
-      <OurTeam></OurTeam>
+      <div className="flex flex-col gap-y-12">
+        <Hero></Hero>
+        <HomeCategory></HomeCategory>
+        <FeaturerWebsite></FeaturerWebsite>
+        <HomeAbout></HomeAbout>
+
+        <OurTeam></OurTeam>
+      </div>
+
     </div>
   );
 }

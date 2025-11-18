@@ -52,7 +52,7 @@ export default function HeroSection() {
         <h1 className="text-3xl font-outfit md:text-5xl lg:text-5xl font-bold text-black leading-tight">
          Professional Themes & <br />  Website Templates for your project
         </h1>
-        <p className="mt-4 font-poppins text-gray-600 max-w-3xl text-center mx-auto">
+        <p className="mt-4 font-poppins text-gray-600 text-[14px] max-w-3xl text-center mx-auto">
           The best solution to build Digital Agency & Portfolio website to showcase your portfolio
         </p>
       </div>

@@ -4,7 +4,7 @@ import { FaStar, FaProjectDiagram, FaBuilding, FaUserTie, FaSmile } from "react-
 
 const HomeAbout = () => {
   return (
-    <section className="w-full py-24  font-poppins relative overflow-hidden">
+    <section className="w-full font-poppins relative overflow-hidden">
 
       {/* Soft background blobs */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-[#f1f1f1] rounded-full blur-3xl opacity-60"></div>
@@ -43,7 +43,7 @@ const HomeAbout = () => {
             What I Do
           </button>
 
-          <h2 className="text-5xl font-outfit font-bold text-[#0A3029] mb-6 leading-tight">
+          <h2 className="text-4xl font-outfit font-bold text-[#0A3029] mb-6 leading-tight">
             We’re Aleric IT <br /> Solutions Agency
           </h2>
 
@@ -60,7 +60,7 @@ const HomeAbout = () => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 leading-relaxed mb-6 text-lg font-poppins">
+          <p className="text-gray-600 leading-relaxed mb-6 text-[14px] font-poppins">
             “Aleric delivered exactly what we needed — efficient, reliable, and 
             results-driven solutions. We’ve seen measurable improvements since 
             partnering with them. We bring ideas to life with creativity, precision, 
@@ -76,45 +76,7 @@ const HomeAbout = () => {
       </div>
 
       {/* ================= BOTTOM STATS ================= */}
-      <div className="max-w-6xl mx-auto px-6 mt-20 grid grid-cols-2 md:grid-cols-4 gap-10 text-center relative z-10">
-
-        {/* Item 1 */}
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-3">
-            <FaProjectDiagram size={28} className="text-[#0A3029]" />
-          </div>
-          <h3 className="text-3xl font-bold text-[#0A3029] font-outfit">34K</h3>
-          <p className="text-gray-600 text-sm">Project Completed</p>
-        </div>
-
-        {/* Item 2 */}
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-3">
-            <FaBuilding size={28} className="text-[#0A3029]" />
-          </div>
-          <h3 className="text-3xl font-bold text-[#0A3029] font-outfit">16K</h3>
-          <p className="text-gray-600 text-sm">Country Office</p>
-        </div>
-
-        {/* Item 3 */}
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-3">
-            <FaUserTie size={28} className="text-[#0A3029]" />
-          </div>
-          <h3 className="text-3xl font-bold text-[#0A3029] font-outfit">12+</h3>
-          <p className="text-gray-600 text-sm">Year of Experience</p>
-        </div>
-
-        {/* Item 4 */}
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-3">
-            <FaSmile size={28} className="text-[#0A3029]" />
-          </div>
-          <h3 className="text-3xl font-bold text-[#0A3029] font-outfit">98%</h3>
-          <p className="text-gray-600 text-sm">Happy Customer</p>
-        </div>
-      </div>
-
+    
     </section>
   );
 };
