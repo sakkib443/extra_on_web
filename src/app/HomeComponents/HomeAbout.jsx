@@ -4,7 +4,7 @@ import { FaStar, FaProjectDiagram, FaBuilding, FaUserTie, FaSmile } from "react-
 
 const HomeAbout = () => {
   return (
-    <section className="w-full font-poppins relative overflow-hidden">
+    <section className="w-full   font-poppins relative overflow-hidden">
 
       {/* Soft background blobs */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-[#f1f1f1] rounded-full blur-3xl opacity-60"></div>

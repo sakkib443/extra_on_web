@@ -1,11 +1,10 @@
-import { Outfit,Poppins } from "next/font/google";
+import { Outfit, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/Components/Shared/Header/Navbar";
 import TopHeader from "@/Components/Shared/Header/TopHeader";
+import ScrollProvider from "@/utils/scrollProvider";
 
 // Google Fonts
-
-
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -15,8 +14,7 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
-})
-
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -25,13 +23,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={` ${outfit.variable} ${poppins.variable} antialiased`}
-      >
-        <TopHeader></TopHeader>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${outfit.variable} ${poppins.variable} antialiased`}>
+      {/* <ScrollProvider> */}
+          <TopHeader />
         <Header />
         {children}
+      {/* </ScrollProvider> */}
       </body>
     </html>
   );

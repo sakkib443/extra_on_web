@@ -27,3 +27,9 @@ body {
   color: var(--foreground);
 
 }
+html {
+  @apply scroll-smooth;
+}
+html {
+  scroll-behavior: smooth; /* Smooth scroll whole website */
+}

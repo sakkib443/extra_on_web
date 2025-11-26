@@ -8,7 +8,7 @@ const navItems = [
   {
     name: "Website Template",
     href: "/websites",
-    dropdown: ["Html", "WordPress", "Mern", "React"],
+    // dropdown: ["Html", "WordPress", "Mern", "React"],
   },
   {
     name: "Products",
@@ -26,7 +26,7 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm font-outfit">
+    <header className="sticky top-0 z-50  bg-white border-b border-gray-100 shadow-sm font-outfit">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
@@ -70,7 +70,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-gray-700 hover:text-teal-600 font-medium py-2 transition duration-150"
+                    className="text-gray-700 cursor-pointer hover:text-teal-600 font-medium py-2 transition duration-150"
                   >
                     {item.name}
                   </Link>
@@ -79,7 +79,7 @@ export default function Header() {
                 {/* Hover Dropdown */}
                 {item.dropdown && (
                   <div className="absolute left-0 mt-2 w-44 rounded-sm shadow-md bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                    <div className="py-1">
+                    <div  className="py-1">
                       {item.dropdown.map((subItem) => (
                         <Link
                           key={subItem}
