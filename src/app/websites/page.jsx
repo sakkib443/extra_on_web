@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import WebsiteCard from "../../Components/Shared/Sections/WebsiteCard";
 
 export default function WebsitesPage() {
   const [websites, setWebsites] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
 
   // Filters
   const [category, setCategory] = useState("all");
@@ -12,117 +13,133 @@ export default function WebsitesPage() {
   const [rating, setRating] = useState(0);
   const [sort, setSort] = useState("newest");
 
-  // Fetch JSON
+  // ✅ Fetch Websites
   useEffect(() => {
     fetch("/websites.json")
       .then((r) => r.json())
-      .then((data) => {
-        setWebsites(data);
-        setFiltered(data);
-      });
+      .then(setWebsites);
   }, []);
 
-  // Filtering
+  // ✅ Fetch Category
   useEffect(() => {
+    fetch("/category.json")
+      .then((r) => r.json())
+      .then(setCategories);
+  }, []);
+
+  // ✅ Fetch Platform
+  useEffect(() => {
+    fetch("/platform.json")
+      .then((r) => r.json())
+      .then(setPlatforms);
+  }, []);
+
+  // ✅ Filter + Sort
+  const filtered = useMemo(() => {
     let result = [...websites];
 
+    // Category Filter
     if (category !== "all") {
-      result = result.filter((item) => item.category === category);
+      result = result.filter(
+        (item) => item.category && item.category.toLowerCase() === category.toLowerCase()
+      );
     }
+
+    // Platform Filter
     if (type !== "all") {
-      result = result.filter((item) => item.type === type);
+      result = result.filter(
+        (item) => item.platform && item.platform.toLowerCase() === type.toLowerCase()
+      );
     }
+
+    // Rating Filter
     if (rating > 0) {
       result = result.filter((item) => item.rating >= rating);
     }
 
-    // Sorting
-    if (sort === "newest") {
-      result = result.sort((a, b) => b.id - a.id);
-    }
-    if (sort === "oldest") {
-      result = result.sort((a, b) => a.id - b.id);
-    }
-    if (sort === "rating") {
-      result = result.sort((a, b) => b.rating - a.rating);
-    }
-    if (sort === "price_high") {
-      result = result.sort((a, b) => b.price - a.price);
-    }
-    if (sort === "price_low") {
-      result = result.sort((a, b) => a.price - b.price);
-    }
+    // Sort
+    if (sort === "newest") result.sort((a, b) => b.id - a.id);
+    else if (sort === "oldest") result.sort((a, b) => a.id - b.id);
+    else if (sort === "rating") result.sort((a, b) => b.rating - a.rating);
+    else if (sort === "price_high") result.sort((a, b) => b.price - a.price);
+    else if (sort === "price_low") result.sort((a, b) => a.price - b.price);
 
-    setFiltered(result);
-  }, [category, type, rating, sort, websites]);
+    return result;
+  }, [websites, category, type, rating, sort]);
 
   return (
-    <div className="flex p-6 gap-6 font-outfit  container mx-auto">
-      {/* Left Sidebar */}
+    <div className="flex p-6 gap-6 font-outfit container mx-auto">
+
+      {/* LEFT FILTER */}
       <div className="w-64 p-6 bg-white shadow-lg rounded-xl h-fit space-y-6">
-        <h3 className="text-xl font-semibold mb-2 border-b pb-2">Filters</h3>
+        <h3 className="text-xl font-semibold border-b pb-2">Filters</h3>
 
-        {/* Category Filter */}
-        <div className="space-y-2">
+        {/* CATEGORY */}
+        <div>
           <h4 className="font-medium text-gray-700">Category</h4>
-          <div className="space-y-1 mt-2  overflow-y-auto">
-            {[
-              "All Categories",
-              "Site Templates",
-              "WordPress",
-              "UI Templates",
-              "Template Kits",
-              "CMS Themes",
-              "Muse Templates",
-              "Marketing",
-              "Jamstack",
-              "eCommerce",
-              "Blogging",
-              "Courses",
-            ].map((cat, idx) => (
-              <label key={idx} className="flex items-center space-x-2 text-gray-600 hover:text-teal-600 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 text-teal-500 border-gray-300 rounded" />
-                <span className="text-sm">{cat}</span>
+          <div className="space-y-1 mt-2 overflow-y-auto">
+            <label className="flex items-center gap-2 text-[14px] cursor-pointer">
+              <input
+                type="radio"
+                name="category"
+                value="all"
+                checked={category === "all"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <span>All</span>
+            </label>
+
+            {categories.map((cat) => (
+              <label key={cat.id} className="flex items-center gap-2 text-[14px] cursor-pointer">
+                <input
+                  type="radio"
+                  name="category"
+                  value={cat.name}
+                  checked={category === cat.name}
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <span>{cat.name}</span>
               </label>
             ))}
           </div>
         </div>
 
-        {/* Website Type Filter */}
-        <div className="space-y-2">
-          <h4 className="font-medium text-gray-700">Website Type</h4>
-          <div className="space-y-1 mt-2">
-            {["All", "Premium", "Free"].map((type, idx) => (
-              <label key={idx} className="flex items-center space-x-2 text-gray-600 hover:text-teal-600 cursor-pointer">
-                <input type="radio" name="websiteType" className="w-4 h-4 text-teal-500 border-gray-300" />
-                <span className="text-sm">{type}</span>
-              </label>
-            ))}
-          </div>
+        {/* PLATFORM */}
+        <div>
+          <h4 className="font-medium text-gray-700">Platform</h4>
+          <label className="flex items-center gap-2 text-[14px] cursor-pointer">
+            <input
+              type="radio"
+              name="platform"
+              value="all"
+              checked={type === "all"}
+              onChange={(e) => setType(e.target.value)}
+            />
+            <span>All</span>
+          </label>
+
+          {platforms.map((p) => (
+            <label key={p.id} className="flex items-center gap-2 text-[14px] cursor-pointer">
+              <input
+                type="radio"
+                name="platform"
+                value={p.name}
+                checked={type === p.name}
+                onChange={(e) => setType(e.target.value)}
+              />
+              <span>{p.name}</span>
+            </label>
+          ))}
         </div>
 
-        {/* Price Filter */}
-        <div className="space-y-2">
-          <h4 className="font-medium text-gray-700">Price</h4>
-          <div className="flex items-center space-x-2 mt-2">
-            <input
-              type="number"
-              placeholder="$ Min"
-              className="w-1/2 p-2 border border-gray-300 rounded-sm focus:ring-1 focus:ring-teal-500 focus:border-teal-500"
-            />
-            <input
-              type="number"
-              placeholder="$ Max"
-              className="w-1/2 p-2 border border-gray-300 rounded-sm focus:ring-1 focus:ring-teal-500 focus:border-teal-500"
-            />
-          </div>
-        </div>
-
-        {/* Rating Filter */}
-        <div className="space-y-2">
+        {/* RATING */}
+        <div>
           <h4 className="font-medium text-gray-700">Minimum Rating</h4>
-          <select className="w-full mt-2 p-2 border border-gray-300 rounded-sm focus:ring-1 focus:ring-teal-500 focus:border-teal-500">
-            <option value="0">All Ratings</option>
+          <select
+            onChange={(e) => setRating(Number(e.target.value))}
+            className="w-full mt-2 p-2 border rounded"
+          >
+            <option value="0">All</option>
             <option value="3">3★ & above</option>
             <option value="4">4★ & above</option>
             <option value="5">5★</option>
@@ -130,14 +147,10 @@ export default function WebsitesPage() {
         </div>
       </div>
 
-      {/* Right Section */}
+      {/* RIGHT SIDE */}
       <div className="flex-1">
-
-        {/* Top Sorting Bar */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold">
-            {filtered.length} Websites Found
-          </h2>
+          <h2 className="text-xl font-semibold">{filtered.length} Websites Found</h2>
 
           <select
             className="p-2 border rounded"
@@ -151,7 +164,6 @@ export default function WebsitesPage() {
           </select>
         </div>
 
-        {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filtered.map((item) => (
             <WebsiteCard key={item.id} item={item} />

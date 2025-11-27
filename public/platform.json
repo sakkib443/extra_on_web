@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "MERN Stack",
+    "slug": "mern",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "WordPress",
+    "slug": "wordpress",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "React",
+    "slug": "react",
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "PHP",
+    "slug": "php",
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "name": "Shopify",
+    "slug": "shopify",
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "name": "HTML & CSS",
+    "slug": "html-css",
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "name": "Next.js",
+    "slug": "nextjs",
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "name": "Laravel",
+    "slug": "laravel",
+    "status": "active"
+  }
+]

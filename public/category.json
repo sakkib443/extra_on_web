@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Ecommerce",
+    "slug": "ecommerce",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "Business Website",
+    "slug": "business",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "Learning Management",
+    "slug": "lms",
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "Blog & Magazine",
+    "slug": "blog-magazine",
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "name": "Portfolio",
+    "slug": "portfolio",
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "name": "School Management",
+    "slug": "school-management",
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "name": "SaaS & Dashboard",
+    "slug": "saas-dashboard",
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "name": "Agency Website",
+    "slug": "agency",
+    "status": "active"
+  },
+  {
+    "id": 9,
+    "name": "Enterprise System",
+    "slug": "enterprise",
+    "status": "active"
+  }
+]
