@@ -5,8 +5,8 @@ import { CiLocationOn } from "react-icons/ci";
 
 export default function TopHeader() {
     return (
-        <div className=" bg-primary ">
-            <div className="w-full font-outfit container mx-auto  text-gray-100 text-sm py-2 md:px-24  flex items-center justify-center md:justify-between">
+        <div className=" bg-[linear-gradient(to_right,#A777E3,#66B3FF)]">
+            <div className="w-full font-outfit  container mx-auto  text-gray-100 text-sm py-2 md:px-24  flex items-center justify-center md:justify-between">
                 {/* Left Side */}
                 <div className="">
                     <div className="flex items-center gap-6 ">

@@ -1,10 +1,11 @@
-import Image from "next/image";
+
 import Hero from "./HomeComponents/Hero";
 import HomeAbout from "./HomeComponents/HomeAbout";
 import OurTeam from "./HomeComponents/Team";
 import FeaturerWebsite from "./HomeComponents/FeatureWebsite";
 import HomeCategory from "./HomeComponents/HomeCategory";
 import Test from "./HomeComponents/Test";
+import Testimonial from "./HomeComponents/Testimonial";
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
         <HomeAbout></HomeAbout>
 
         <OurTeam></OurTeam>
-        <Test/>
+        <Testimonial></Testimonial>
+     
       </div>
 
     </div>

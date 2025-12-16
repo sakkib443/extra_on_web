@@ -2,15 +2,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { IoSearch } from "react-icons/io5";
-import bgImage from '../../images/grid-bg.png';
-import mainImg from "../../images/banner_img02.png";
-import side1 from "../../images/image.webp";
-import side2 from "../../images/image1.webp";
+import { useRouter } from "next/navigation";
+import bgImage from '../../../images/grid-bg.png';
+import mainImg from "../../../images/banner_img02.png";
+import side1 from "../../../images/image.webp";
+import side2 from "../../../images/image1.webp";
 
 export default function HeroSection() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Services");
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   const categories = ["All Services", "Web Design", "Graphic Design", "SEO", "Marketing"];
 
@@ -24,6 +27,13 @@ export default function HeroSection() {
 
   const handleMouseLeave = () => {
     setMousePos({ x: 0, y: 0 });
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      router.push(`/websites?search=${encodeURIComponent(searchTerm.trim())}`);
+    }
   };
 
   const parallaxStyle = (intensity) => ({
@@ -45,7 +55,7 @@ export default function HeroSection() {
       {/* Text */}
       <div className="relative z-10">
         <h1 className="text-3xl font-outfit md:text-5xl lg:text-5xl font-bold text-black leading-tight">
-          Professional Themes & <br /> Website Templates for your project
+          <span className="text-primary">Professional</span> <span className="">Themes & </span><br /> Website Templates for your project
         </h1>
         <p className="mt-4 font-poppins text-gray-600 text-[14px] max-w-3xl text-center mx-auto">
           The best solution to build Digital Agency & Portfolio website to showcase your portfolio
@@ -54,11 +64,12 @@ export default function HeroSection() {
 
       {/* Search Bar with Category */}
       <div className="relative z-10 mt-8 w-full max-w-xl">
-        <div className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <form onSubmit={handleSearch} className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
           
           {/* Category Dropdown */}
           <div className="relative">
             <button
+              type="button"
               onClick={() => setCategoryOpen(!categoryOpen)}
               className="flex items-center px-4 py-3 text-gray-700 font-medium focus:outline-none"
             >
@@ -84,12 +95,17 @@ export default function HeroSection() {
           <input
             type="text"
             placeholder="Search your services..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="flex-1 py-3 px-4 text-gray-700 text-base focus:outline-none bg-transparent"
           />
-          <button className="bg-primary text-white font-semibold px-4 py-2 cursor-pointer rounded-full mr-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+          <button 
+            type="submit"
+            className="bg-primary text-white font-semibold px-4 py-2 cursor-pointer rounded-full mr-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+          >
             Search
           </button>
-        </div>
+        </form>
       </div>
 
       {/* Images Container */}

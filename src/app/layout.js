@@ -26,8 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <body className={`${outfit.variable} ${poppins.variable} antialiased`}>
       {/* <ScrollProvider> */}
-          <TopHeader />
-        <Header />
+    
         {children}
       {/* </ScrollProvider> */}
       </body>
