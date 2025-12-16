@@ -4,7 +4,7 @@ import { FaBuilding, FaProjectDiagram, FaSmile, FaUserTie } from 'react-icons/fa
 const HomeCategory = () => {
     return (
         <div>
-              <div className="max-w-6xl mx-auto px-6  grid grid-cols-2 md:grid-cols-4 gap-10 text-center relative z-10">
+              <div className="max-w-6xl mx-auto px-6 -mt-34  grid grid-cols-2 md:grid-cols-4 gap-10 text-center relative z-10">
 
         {/* Item 1 */}
         <div className="flex flex-col items-center">

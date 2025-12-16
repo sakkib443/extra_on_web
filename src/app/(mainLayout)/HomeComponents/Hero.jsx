@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/navigation";
@@ -13,9 +13,47 @@ export default function HeroSection() {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Services");
   const [searchTerm, setSearchTerm] = useState("");
+  const [particles, setParticles] = useState([]);
   const router = useRouter();
 
   const categories = ["All Services", "Web Design", "Graphic Design", "SEO", "Marketing"];
+
+  // Generate elegant floating particles
+  useEffect(() => {
+    const generateParticles = () => {
+      const newParticles = [];
+      for (let i = 0; i < 15; i++) {
+        newParticles.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 4 + 2,
+          speedX: (Math.random() - 0.5) * 0.2,
+          speedY: (Math.random() - 0.5) * 0.2,
+          opacity: Math.random() * 0.4 + 0.2,
+          color: ['#8B5CF6', '#06B6D4', '#10B981', '#F59E0B'][Math.floor(Math.random() * 4)]
+        });
+      }
+      setParticles(newParticles);
+    };
+    generateParticles();
+  }, []);
+
+  // Animate particles smoothly
+  useEffect(() => {
+    const animateParticles = () => {
+      setParticles(prevParticles =>
+        prevParticles.map(particle => ({
+          ...particle,
+          x: (particle.x + particle.speedX + 100) % 100,
+          y: (particle.y + particle.speedY + 100) % 100,
+        }))
+      );
+    };
+
+    const interval = setInterval(animateParticles, 150);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleMouseMove = (e) => {
     const { clientX, clientY, currentTarget } = e;
@@ -38,7 +76,7 @@ export default function HeroSection() {
 
   const parallaxStyle = (intensity) => ({
     transform: `translate3d(${mousePos.x * intensity}px, ${mousePos.y * intensity}px, 0)`,
-    transition: 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+    transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
   });
 
   return (
@@ -48,9 +86,52 @@ export default function HeroSection() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Background Blobs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-100 rounded-full opacity-50 blur-3xl animate-pulse" style={{ animationDuration: '6s', zIndex: 0 }}></div>
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-100 rounded-full opacity-50 blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '2s', zIndex: 0 }}></div>
+      {/* Elegant Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-400/15 via-blue-400/15 to-cyan-400/15 animate-gradient-elegant"></div>
+
+      {/* Floating Particles */}
+      {particles.map(particle => (
+        <div
+          key={particle.id}
+          className="absolute rounded-full animate-float-elegant"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            backgroundColor: particle.color,
+            opacity: particle.opacity,
+            animationDelay: `${particle.id * 0.3}s`,
+            boxShadow: `0 0 ${particle.size * 3}px ${particle.color}30`
+          }}
+        />
+      ))}
+
+      {/* Elegant Geometric Shapes */}
+      <div className="absolute top-20 left-20 w-24 h-24 border-2 border-purple-300/20 rounded-full animate-spin-elegant"></div>
+      <div className="absolute top-40 right-32 w-20 h-20 bg-cyan-200/15 rounded-lg animate-bounce-elegant"></div>
+      <div className="absolute bottom-32 left-40 w-16 h-16 bg-yellow-200/15 transform rotate-45 animate-pulse-elegant"></div>
+      <div className="absolute bottom-40 right-20 w-28 h-28 border-2 border-green-300/20 rounded-full animate-rotate-elegant"></div>
+
+      {/* Smooth Morphing Background Blobs */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 md:w-96 md:h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full opacity-50 blur-3xl animate-morph-elegant-1" style={{ zIndex: 0 }}></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 md:w-96 md:h-96 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full opacity-50 blur-3xl animate-morph-elegant-2" style={{ zIndex: 0 }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-400/15 to-yellow-400/15 rounded-full opacity-40 blur-2xl animate-morph-elegant-3" style={{ zIndex: 0 }}></div>
+
+      {/* Elegant Wave Animations */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/85 to-transparent">
+        <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+          <polygon className="fill-white animate-wave-elegant-1" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+        <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+          <polygon className="fill-white/65 animate-wave-elegant-2" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+
+      {/* Subtle Glowing Orbs */}
+      <div className="absolute top-1/3 left-1/6 w-4 h-4 bg-purple-500 rounded-full animate-glow-elegant-1 shadow-lg shadow-purple-500/30"></div>
+      <div className="absolute top-2/3 right-1/6 w-5 h-5 bg-cyan-500 rounded-full animate-glow-elegant-2 shadow-lg shadow-cyan-500/30"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-yellow-500 rounded-full animate-glow-elegant-3 shadow-lg shadow-yellow-500/30"></div>
 
       {/* Text */}
       <div className="relative z-10">
@@ -65,7 +146,7 @@ export default function HeroSection() {
       {/* Search Bar with Category */}
       <div className="relative z-10 mt-8 w-full max-w-xl">
         <form onSubmit={handleSearch} className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-          
+
           {/* Category Dropdown */}
           <div className="relative">
             <button
@@ -99,7 +180,7 @@ export default function HeroSection() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="flex-1 py-3 px-4 text-gray-700 text-base focus:outline-none bg-transparent"
           />
-          <button 
+          <button
             type="submit"
             className="bg-primary text-white font-semibold px-4 py-2 cursor-pointer rounded-full mr-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >

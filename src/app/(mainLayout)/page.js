@@ -6,6 +6,7 @@ import FeaturerWebsite from "./HomeComponents/FeatureWebsite";
 import HomeCategory from "./HomeComponents/HomeCategory";
 import Test from "./HomeComponents/Test";
 import Testimonial from "./HomeComponents/Testimonial";
+import HomeLast from "./HomeComponents/HomeLast";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
 
         <OurTeam></OurTeam>
         <Testimonial></Testimonial>
+        <HomeLast></HomeLast>
      
       </div>
 
