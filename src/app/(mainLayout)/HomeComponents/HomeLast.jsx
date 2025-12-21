@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomeLast = () => {
     return (
-        <section className="w-full bg-white font-poppins relative overflow-hidden py-20">
+        <section className="w-full bg-white font-poppins relative overflow-hidden mb-24">
 
             {/* Background Elements */}
             <div className="absolute top-20 left-20 w-96 h-96 bg-[#f1f1f1] rounded-full blur-3xl opacity-40"></div>

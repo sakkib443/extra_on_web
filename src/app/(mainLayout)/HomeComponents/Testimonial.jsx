@@ -96,7 +96,7 @@ const Testimonial = () => {
               </div>
 
               {/* Testimonial Text */}
-              <blockquote className="text-gray-700 text-lg leading-relaxed mb-8 italic font-medium">
+              <blockquote className="text-gray-500 leading-relaxed mb-8  font-medium">
                 "{testimonial.testimonial}"
               </blockquote>
 
