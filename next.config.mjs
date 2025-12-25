@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['market-resized.envatousercontent.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'market-resized.envatousercontent.com',
+        pathname: '/**',
+      },
+    ],
+    unoptimized: true,
   },
 };
 

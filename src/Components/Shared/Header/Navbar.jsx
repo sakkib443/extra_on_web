@@ -11,17 +11,21 @@ const navItems = [
     name: "Website Template",
     href: "/websites",
     // dropdown: ["Html", "WordPress", "Mern", "React"],
+    
   },
+  { name: "Softwere", href: "/softwere" },
   {
     name: "Products",
     href: "/products",
     dropdown: ["Themes", "Templates", "Plugins"],
   },
-  {
-    name: "Tools",
-    href: "/tools",
-    dropdown: ["Editor", "Converter"],
-  },
+  // {
+  //   name: "Tools",
+  //   href: "/tools",
+  //   dropdown: ["Editor", "Converter"],
+  // },
+  
+  
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

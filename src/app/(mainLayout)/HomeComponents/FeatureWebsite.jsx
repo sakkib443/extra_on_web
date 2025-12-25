@@ -40,7 +40,7 @@ export default function PopularWebsite() {
 
     return (
         <section className="w-full font-outfit">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="container px-24 mx-auto px-4">
 
                 {/* Title + Button */}
                 <div className="flex items-center justify-between mb-10">

@@ -1,0 +1,351 @@
+[
+    {
+        "id": 1,
+        "name": "Visual Studio Code",
+        "slug": "visual-studio-code",
+        "category": "Development",
+        "subcategory": "Code Editor",
+        "developer": "Microsoft",
+        "version": "1.85.0",
+        "releaseDate": "2024-01-15",
+        "size": "95 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ],
+        "license": "Free",
+        "price": 0,
+        "rating": 4.9,
+        "reviews": 15420,
+        "downloads": "50M+",
+        "description": "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS, and Linux. It comes with built-in support for JavaScript, TypeScript, and Node.js.",
+        "features": [
+            "IntelliSense code completion",
+            "Built-in Git integration",
+            "Extensive extension marketplace",
+            "Integrated terminal",
+            "Debugging support",
+            "Multiple language support"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.15+, Linux",
+            "ram": "1 GB RAM minimum",
+            "storage": "500 MB available space",
+            "processor": "1.6 GHz or faster"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
+            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600",
+        "downloadLink": "#",
+        "website": "https://code.visualstudio.com"
+    },
+    {
+        "id": 2,
+        "name": "Adobe Photoshop",
+        "slug": "adobe-photoshop",
+        "category": "Design",
+        "subcategory": "Image Editing",
+        "developer": "Adobe Inc.",
+        "version": "25.0",
+        "releaseDate": "2024-02-01",
+        "size": "2.5 GB",
+        "platform": [
+            "Windows",
+            "macOS"
+        ],
+        "license": "Subscription",
+        "price": 22.99,
+        "rating": 4.8,
+        "reviews": 25680,
+        "downloads": "100M+",
+        "description": "Adobe Photoshop is the industry-standard photo editing and graphic design software. Create stunning images, graphics, and art with professional tools.",
+        "features": [
+            "Advanced photo editing",
+            "AI-powered tools",
+            "Layer management",
+            "Content-aware fill",
+            "Neural filters",
+            "3D design capabilities"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 11+",
+            "ram": "8 GB RAM minimum",
+            "storage": "4 GB available space",
+            "processor": "Intel or AMD 64-bit processor"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800",
+            "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600",
+        "downloadLink": "#",
+        "website": "https://adobe.com/photoshop"
+    },
+    {
+        "id": 3,
+        "name": "Figma",
+        "slug": "figma",
+        "category": "Design",
+        "subcategory": "UI/UX Design",
+        "developer": "Figma Inc.",
+        "version": "124.0",
+        "releaseDate": "2024-01-20",
+        "size": "150 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Web"
+        ],
+        "license": "Freemium",
+        "price": 0,
+        "rating": 4.9,
+        "reviews": 18920,
+        "downloads": "25M+",
+        "description": "Figma is a collaborative interface design tool that enables teams to design, prototype, and gather feedback in one place.",
+        "features": [
+            "Real-time collaboration",
+            "Auto Layout",
+            "Component libraries",
+            "Prototyping",
+            "Design systems",
+            "Developer handoff"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.13+",
+            "ram": "4 GB RAM minimum",
+            "storage": "1 GB available space",
+            "processor": "Any modern processor"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800",
+            "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600",
+        "downloadLink": "#",
+        "website": "https://figma.com"
+    },
+    {
+        "id": 4,
+        "name": "Slack",
+        "slug": "slack",
+        "category": "Productivity",
+        "subcategory": "Communication",
+        "developer": "Salesforce",
+        "version": "4.35.0",
+        "releaseDate": "2024-01-10",
+        "size": "180 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "iOS",
+            "Android"
+        ],
+        "license": "Freemium",
+        "price": 0,
+        "rating": 4.7,
+        "reviews": 32450,
+        "downloads": "75M+",
+        "description": "Slack is a messaging app for business that connects people to the information they need. Teams can work together more effectively with channels for organized conversations.",
+        "features": [
+            "Organized channels",
+            "Direct messaging",
+            "File sharing",
+            "Video calls",
+            "App integrations",
+            "Search functionality"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.13+",
+            "ram": "4 GB RAM minimum",
+            "storage": "500 MB available space",
+            "processor": "Any modern processor"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800",
+            "https://images.unsplash.com/photo-1552581234-26160f608093?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600",
+        "downloadLink": "#",
+        "website": "https://slack.com"
+    },
+    {
+        "id": 5,
+        "name": "Notion",
+        "slug": "notion",
+        "category": "Productivity",
+        "subcategory": "Note Taking",
+        "developer": "Notion Labs",
+        "version": "3.1.0",
+        "releaseDate": "2024-02-05",
+        "size": "120 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "iOS",
+            "Android",
+            "Web"
+        ],
+        "license": "Freemium",
+        "price": 0,
+        "rating": 4.8,
+        "reviews": 28760,
+        "downloads": "40M+",
+        "description": "Notion is an all-in-one workspace for notes, tasks, wikis, and databases. Customize your workflow and collaborate with your team seamlessly.",
+        "features": [
+            "Flexible databases",
+            "Rich text editing",
+            "Templates library",
+            "Team collaboration",
+            "API integrations",
+            "Offline access"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.13+",
+            "ram": "4 GB RAM minimum",
+            "storage": "500 MB available space",
+            "processor": "Any modern processor"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1517842645767-c639042777db?w=800",
+            "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600",
+        "downloadLink": "#",
+        "website": "https://notion.so"
+    },
+    {
+        "id": 6,
+        "name": "OBS Studio",
+        "slug": "obs-studio",
+        "category": "Multimedia",
+        "subcategory": "Streaming",
+        "developer": "OBS Project",
+        "version": "30.0.2",
+        "releaseDate": "2024-01-25",
+        "size": "250 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ],
+        "license": "Free",
+        "price": 0,
+        "rating": 4.8,
+        "reviews": 45230,
+        "downloads": "80M+",
+        "description": "OBS Studio is free and open source software for video recording and live streaming. Stream to Twitch, YouTube, and more or record your videos with high performance.",
+        "features": [
+            "High performance recording",
+            "Live streaming",
+            "Scene composition",
+            "Audio mixing",
+            "Custom transitions",
+            "Plugin support"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.15+, Linux",
+            "ram": "4 GB RAM minimum",
+            "storage": "1 GB available space",
+            "processor": "Intel i5 or equivalent"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800",
+            "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600",
+        "downloadLink": "#",
+        "website": "https://obsproject.com"
+    },
+    {
+        "id": 7,
+        "name": "Blender",
+        "slug": "blender",
+        "category": "Design",
+        "subcategory": "3D Modeling",
+        "developer": "Blender Foundation",
+        "version": "4.0.2",
+        "releaseDate": "2024-01-18",
+        "size": "350 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ],
+        "license": "Free",
+        "price": 0,
+        "rating": 4.9,
+        "reviews": 38900,
+        "downloads": "35M+",
+        "description": "Blender is a free and open source 3D creation suite. It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking.",
+        "features": [
+            "3D modeling",
+            "Animation & rigging",
+            "Video editing",
+            "VFX & simulation",
+            "Scripting with Python",
+            "Real-time rendering"
+        ],
+        "requirements": {
+            "os": "Windows 10+, macOS 10.15+, Linux",
+            "ram": "8 GB RAM minimum",
+            "storage": "2 GB available space",
+            "processor": "64-bit quad-core CPU"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800",
+            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600",
+        "downloadLink": "#",
+        "website": "https://blender.org"
+    },
+    {
+        "id": 8,
+        "name": "Discord",
+        "slug": "discord",
+        "category": "Communication",
+        "subcategory": "Voice Chat",
+        "developer": "Discord Inc.",
+        "version": "0.0.310",
+        "releaseDate": "2024-02-08",
+        "size": "120 MB",
+        "platform": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "iOS",
+            "Android"
+        ],
+        "license": "Free",
+        "price": 0,
+        "rating": 4.7,
+        "reviews": 52340,
+        "downloads": "150M+",
+        "description": "Discord is the easiest way to talk over voice, video, and text. Chat with friends, communities, and gamers worldwide.",
+        "features": [
+            "Voice & video calls",
+            "Server communities",
+            "Screen sharing",
+            "Bot integrations",
+            "Custom emojis",
+            "Role management"
+        ],
+        "requirements": {
+            "os": "Windows 7+, macOS 10.11+",
+            "ram": "512 MB RAM minimum",
+            "storage": "300 MB available space",
+            "processor": "Any modern processor"
+        },
+        "screenshots": [
+            "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800",
+            "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=800"
+        ],
+        "image": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=600",
+        "downloadLink": "#",
+        "website": "https://discord.com"
+    }
+]

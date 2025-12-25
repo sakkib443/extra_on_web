@@ -3,69 +3,40 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-import bgImage from '../../../images/grid-bg.png';
+import { FaCode, FaLaptopCode, FaMobileAlt, FaRocket, FaCheckCircle, FaStar, FaUsers, FaDownload } from "react-icons/fa";
+import { HiOutlineSparkles } from "react-icons/hi";
 import mainImg from "../../../images/banner_img02.png";
 import side1 from "../../../images/image.webp";
 import side2 from "../../../images/image1.webp";
 
 export default function HeroSection() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Services");
   const [searchTerm, setSearchTerm] = useState("");
-  const [particles, setParticles] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
 
-  const categories = ["All Services", "Web Design", "Graphic Design", "SEO", "Marketing"];
+  const categories = ["All Services", "Web Template", "Software", "UI Kit", "WordPress"];
 
-  // Generate elegant floating particles
+  // Carousel slides
+  const slides = [
+    { id: 1, image: mainImg, title: "Agency Template", price: "$49", badge: "Best Seller" },
+    { id: 2, image: side1, title: "E-commerce Theme", price: "$59", badge: "Popular" },
+    { id: 3, image: side2, title: "Portfolio Design", price: "$39", badge: "New" },
+    { id: 4, image: mainImg, title: "SaaS Dashboard", price: "$79", badge: "Featured" },
+    { id: 5, image: side1, title: "Blog Template", price: "$29", badge: "Trending" },
+    { id: 6, image: side2, title: "Landing Page", price: "$35", badge: "Hot" },
+    { id: 7, image: mainImg, title: "Admin Panel", price: "$69", badge: "Premium" },
+    { id: 8, image: side1, title: "App Landing", price: "$45", badge: "Top" },
+  ];
+
+  // Auto slide
   useEffect(() => {
-    const generateParticles = () => {
-      const newParticles = [];
-      for (let i = 0; i < 15; i++) {
-        newParticles.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 4 + 2,
-          speedX: (Math.random() - 0.5) * 0.2,
-          speedY: (Math.random() - 0.5) * 0.2,
-          opacity: Math.random() * 0.4 + 0.2,
-          color: ['#8B5CF6', '#06B6D4', '#10B981', '#F59E0B'][Math.floor(Math.random() * 4)]
-        });
-      }
-      setParticles(newParticles);
-    };
-    generateParticles();
-  }, []);
-
-  // Animate particles smoothly
-  useEffect(() => {
-    const animateParticles = () => {
-      setParticles(prevParticles =>
-        prevParticles.map(particle => ({
-          ...particle,
-          x: (particle.x + particle.speedX + 100) % 100,
-          y: (particle.y + particle.speedY + 100) % 100,
-        }))
-      );
-    };
-
-    const interval = setInterval(animateParticles, 150);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, []);
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY, currentTarget } = e;
-    const { offsetWidth, offsetHeight } = currentTarget;
-    const x = (clientX / offsetWidth) - 0.5;
-    const y = (clientY / offsetHeight) - 0.5;
-    setMousePos({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: 0, y: 0 });
-  };
+  }, [slides.length]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -74,141 +45,219 @@ export default function HeroSection() {
     }
   };
 
-  const parallaxStyle = (intensity) => ({
-    transform: `translate3d(${mousePos.x * intensity}px, ${mousePos.y * intensity}px, 0)`,
-    transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-  });
+  const getSlidePosition = (index) => {
+    const total = slides.length;
+    let diff = index - currentIndex;
+
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+
+    return diff;
+  };
+
+  const stats = [
+    { icon: FaUsers, value: "50K+", label: "Happy Users" },
+    { icon: FaDownload, value: "100K+", label: "Downloads" },
+    { icon: FaStar, value: "4.9", label: "Rating" },
+  ];
 
   return (
-    <div
-      style={{ backgroundImage: `url(${bgImage.src})` }}
-      className="w-full bg-white h-[90vh] flex flex-col items-center justify-center text-center relative overflow-hidden px-4"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Elegant Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-400/15 via-blue-400/15 to-cyan-400/15 animate-gradient-elegant"></div>
-
-      {/* Floating Particles */}
-      {particles.map(particle => (
-        <div
-          key={particle.id}
-          className="absolute rounded-full animate-float-elegant"
-          style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            backgroundColor: particle.color,
-            opacity: particle.opacity,
-            animationDelay: `${particle.id * 0.3}s`,
-            boxShadow: `0 0 ${particle.size * 3}px ${particle.color}30`
-          }}
-        />
-      ))}
-
-      {/* Elegant Geometric Shapes */}
-      <div className="absolute top-20 left-20 w-24 h-24 border-2 border-purple-300/20 rounded-full animate-spin-elegant"></div>
-      <div className="absolute top-40 right-32 w-20 h-20 bg-cyan-200/15 rounded-lg animate-bounce-elegant"></div>
-      <div className="absolute bottom-32 left-40 w-16 h-16 bg-yellow-200/15 transform rotate-45 animate-pulse-elegant"></div>
-      <div className="absolute bottom-40 right-20 w-28 h-28 border-2 border-green-300/20 rounded-full animate-rotate-elegant"></div>
-
-      {/* Smooth Morphing Background Blobs */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 md:w-96 md:h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full opacity-50 blur-3xl animate-morph-elegant-1" style={{ zIndex: 0 }}></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 md:w-96 md:h-96 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full opacity-50 blur-3xl animate-morph-elegant-2" style={{ zIndex: 0 }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-400/15 to-yellow-400/15 rounded-full opacity-40 blur-2xl animate-morph-elegant-3" style={{ zIndex: 0 }}></div>
-
-      {/* Elegant Wave Animations */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/85 to-transparent">
-        <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-          <polygon className="fill-white animate-wave-elegant-1" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-        <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-          <polygon className="fill-white/65 animate-wave-elegant-2" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
+    <div className="w-full min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/30 flex flex-col items-center justify-center text-center relative overflow-hidden px-4 py-16">
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }}></div>
       </div>
 
-      {/* Subtle Glowing Orbs */}
-      <div className="absolute top-1/3 left-1/6 w-4 h-4 bg-purple-500 rounded-full animate-glow-elegant-1 shadow-lg shadow-purple-500/30"></div>
-      <div className="absolute top-2/3 right-1/6 w-5 h-5 bg-cyan-500 rounded-full animate-glow-elegant-2 shadow-lg shadow-cyan-500/30"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-yellow-500 rounded-full animate-glow-elegant-3 shadow-lg shadow-yellow-500/30"></div>
+      {/* Gradient Orbs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 via-blue-400/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-secendery/20 via-purple-400/10 to-transparent rounded-full blur-3xl"></div>
 
-      {/* Text */}
-      <div className="relative z-10">
-        <h1 className="text-3xl font-outfit md:text-5xl lg:text-5xl font-bold text-black leading-tight">
-          <span className="text-primary">Professional</span> <span className="">Themes & </span><br /> Website Templates for your project
+      {/* Floating Code Elements */}
+      <div className="absolute top-20 left-[10%] text-primary/20 animate-bounce hidden md:block" style={{ animationDuration: '3s' }}>
+        <FaCode className="text-4xl" />
+      </div>
+      <div className="absolute top-32 right-[15%] text-secendery/20 animate-bounce hidden md:block" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+        <FaLaptopCode className="text-5xl" />
+      </div>
+      <div className="absolute bottom-40 left-[15%] text-blue-400/20 animate-bounce hidden md:block" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}>
+        <FaMobileAlt className="text-3xl" />
+      </div>
+      <div className="absolute bottom-32 right-[10%] text-green-400/20 animate-bounce hidden md:block" style={{ animationDuration: '4.5s', animationDelay: '1.5s' }}>
+        <FaRocket className="text-4xl" />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full shadow-lg mb-6">
+          <HiOutlineSparkles className="text-primary text-lg" />
+          <span className="text-sm font-medium text-gray-700">Premium Digital Products</span>
+          <span className="px-2 py-0.5 bg-gradient-to-r from-primary to-secendery text-white text-xs font-bold rounded-full">NEW</span>
+        </div>
+
+        {/* Heading */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-bold text-gray-900 leading-tight mb-6">
+          Build Your Dream
+          <span className="block mt-2">
+            <span className="bg-gradient-to-r from-primary via-blue-500 to-secendery bg-clip-text text-transparent">
+              Website & Software
+            </span>
+          </span>
         </h1>
-        <p className="mt-4 font-poppins text-gray-600 text-[14px] max-w-3xl text-center mx-auto">
-          The best solution to build Digital Agency & Portfolio website to showcase your portfolio
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-gray-600 font-poppins max-w-2xl mx-auto mb-8 leading-relaxed">
+          Discover premium website templates, software, and digital products
+          crafted by top developers. Launch your project in minutes.
         </p>
-      </div>
 
-      {/* Search Bar with Category */}
-      <div className="relative z-10 mt-8 w-full max-w-xl">
-        <form onSubmit={handleSearch} className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+        {/* Features Pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {["Premium Quality", "Lifetime Updates", "24/7 Support", "Easy Customization"].map((feature, i) => (
+            <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-full shadow-sm">
+              <FaCheckCircle className="text-green-500 text-sm" />
+              <span className="text-sm font-medium text-gray-700">{feature}</span>
+            </div>
+          ))}
+        </div>
 
-          {/* Category Dropdown */}
-          <div className="relative">
+        {/* Search Bar */}
+        <div className="w-full max-w-2xl mx-auto mb-10">
+          <form onSubmit={handleSearch} className="flex items-center bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-primary/30">
+            <div className="relative hidden md:block">
+              <button
+                type="button"
+                onClick={() => setCategoryOpen(!categoryOpen)}
+                className="flex items-center px-5 py-4 text-gray-700 font-medium focus:outline-none border-r border-gray-100 hover:bg-gray-50 transition-colors"
+              >
+                {selectedCategory}
+                <span className="ml-2 text-gray-400">▾</span>
+              </button>
+              {categoryOpen && (
+                <ul className="absolute top-full left-0 w-48 bg-white border border-gray-200 rounded-xl mt-2 shadow-xl z-20 overflow-hidden">
+                  {categories.map((cat) => (
+                    <li
+                      key={cat}
+                      onClick={() => { setSelectedCategory(cat); setCategoryOpen(false); }}
+                      className="px-4 py-3 hover:bg-gray-50 cursor-pointer text-gray-700 font-medium transition-colors"
+                    >
+                      {cat}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <div className="flex-1 flex items-center px-4">
+              <IoSearch size={22} className="text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search templates, software, themes..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="flex-1 py-4 px-3 text-gray-700 text-base focus:outline-none bg-transparent font-poppins"
+              />
+            </div>
+
             <button
-              type="button"
-              onClick={() => setCategoryOpen(!categoryOpen)}
-              className="flex items-center px-4 py-3 text-gray-700 font-medium focus:outline-none"
+              type="submit"
+              className="bg-gradient-to-r from-primary to-secendery text-white font-bold px-8 py-4 cursor-pointer transition-all duration-300 hover:opacity-90 hover:shadow-lg"
             >
-              {selectedCategory}
-              <span className="ml-2">&#9662;</span>
+              Search
             </button>
-            {categoryOpen && (
-              <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md mt-1 shadow-lg z-20">
-                {categories.map((cat) => (
-                  <li
-                    key={cat}
-                    onClick={() => { setSelectedCategory(cat); setCategoryOpen(false); }}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  >
-                    {cat}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          <IoSearch size={24} className="text-gray-500 ml-2" />
-          <input
-            type="text"
-            placeholder="Search your services..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 py-3 px-4 text-gray-700 text-base focus:outline-none bg-transparent"
-          />
-          <button
-            type="submit"
-            className="bg-primary text-white font-semibold px-4 py-2 cursor-pointer rounded-full mr-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-          >
-            Search
-          </button>
-        </form>
-      </div>
-
-      {/* Images Container */}
-      <div className="relative w-full max-w-6xl mt-12 flex justify-center items-center z-10">
-        <div className="relative z-20" style={parallaxStyle(5)}>
-          <div className="w-72 md:w-96 rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:scale-105">
-            <Image src={mainImg} alt="Main" className="w-full h-full object-cover" />
-          </div>
+          </form>
         </div>
-        <div className="absolute left-2 md:left-30 top-8 md:top-12 opacity-80" style={parallaxStyle(20)}>
-          <div className="w-56 md:w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-rotate-3 hover:-translate-y-2 hover:scale-105">
-            <Image src={side1} alt="Side 1" className="w-full h-full object-cover" />
-          </div>
-        </div>
-        <div className="absolute right-2 md:right-30 top-8 md:top-12 opacity-80" style={parallaxStyle(20)}>
-          <div className="w-56 md:w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:rotate-3 hover:-translate-y-2 hover:scale-105">
-            <Image src={side2} alt="Side 2" className="w-full h-full object-cover" />
-          </div>
+
+        {/* Stats */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-8">
+          {stats.map((stat, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-secendery/10 rounded-xl flex items-center justify-center">
+                <stat.icon className="text-primary text-xl" />
+              </div>
+              <div className="text-left">
+                <p className="text-2xl font-outfit font-bold text-gray-900">{stat.value}</p>
+                <p className="text-sm text-gray-500 font-poppins">{stat.label}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-7xl h-40 md:h-60 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
+      {/* Full Width Carousel */}
+      <div className="relative w-full mt-8 z-10 overflow-hidden">
+        <div className="relative h-[280px] md:h-[350px] flex items-center justify-center">
+          {slides.map((slide, index) => {
+            const position = getSlidePosition(index);
+            const isCenter = position === 0;
+            const isVisible = Math.abs(position) <= 3;
+
+            if (!isVisible) return null;
+
+            const translateX = position * 180;
+            const scale = isCenter ? 1.2 : Math.max(0.7 - Math.abs(position) * 0.08, 0.5);
+            const opacity = isCenter ? 1 : Math.max(0.5 - Math.abs(position) * 0.1, 0.2);
+            const zIndex = isCenter ? 30 : 20 - Math.abs(position);
+
+            return (
+              <div
+                key={slide.id}
+                className="absolute transition-all duration-700 ease-out cursor-pointer"
+                style={{
+                  transform: `translateX(${translateX}px) scale(${scale})`,
+                  opacity,
+                  zIndex,
+                }}
+                onClick={() => setCurrentIndex(index)}
+              >
+                <div className={`relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white group ${isCenter ? 'w-56 md:w-72' : 'w-44 md:w-56'}`}>
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-44 md:h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                  {/* Badge - Only on center */}
+                  {isCenter && (
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                      ⭐ {slide.badge}
+                    </div>
+                  )}
+
+                  {/* Title & Price */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-white font-bold text-sm md:text-base mb-1">{slide.title}</h3>
+                    <span className="text-primary font-bold text-lg">{slide.price}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Carousel Dots */}
+        <div className="flex justify-center gap-2 mt-4">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                  ? 'w-8 bg-gradient-to-r from-primary to-secendery'
+                  : 'w-2 bg-gray-300 hover:bg-gray-400'
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none z-5"></div>
     </div>
   );
 }
